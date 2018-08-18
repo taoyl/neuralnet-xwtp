@@ -13,7 +13,7 @@ class NnApi(object):
     """
     def __init__(self, tr_data):
         self.training_x, self.training_y = self._parse_training_data(tr_data)
-        net = [(self.training_x.shape[0], ''), (4, 'sigmoid'), (4, 'sigmoid'), (self.training_y.shape[0], 'feedthrough')]
+        net = [(self.training_x.shape[0], ''), (4, 'relu'), (4, 'relu'), (self.training_y.shape[0], 'feedthrough')]
         try:
             self.network = NeuralNetwork(self.training_x, self.training_y, sizes=net)
         except ShapeError as e:

@@ -24,7 +24,7 @@ def main():
     print(training_x.shape, training_y.shape)
     print(test_x.shape, test_y.shape)
 
-    net = [(3, ''), (4, 'sigmoid'), (4, 'sigmoid'), (1, 'feedthrough')]
+    net = [(3, ''), (4, 'relu'), (4, 'relu'), (1, 'feedthrough')]
     print("Initializing neural network...")
     try:
         network = NeuralNetwork(training_x, training_y, sizes=net)

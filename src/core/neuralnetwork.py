@@ -13,6 +13,9 @@ from scipy.linalg import norm, pinv
 #############################################################################
 # Global definitions
 
+def relu(z):
+    return np.maximum(z, 0)
+
 
 def sigmoid(z):
     return 1.0 / (1.0 + np.exp(-z))
@@ -24,6 +27,10 @@ def tanh(z):
 
 def feedthrough(z):
     return z
+
+
+def relu_prime(z):
+    return 1.0 * (z > 0)
 
 
 def sigmoid_prime(z):
@@ -38,8 +45,10 @@ def feedthrough_prime(z):
     return np.ones((z.shape[0], z.shape[1]))
 
 
-def activate(acf):
-    if acf == "sigmoid":
+def activate(acf='relu'):
+    if acf == "relu":
+        return relu
+    elif acf == "sigmoid":
         return sigmoid
     elif acf == "tanh":
         return tanh
@@ -47,8 +56,10 @@ def activate(acf):
         return feedthrough
 
 
-def activate_derivative(acf):
-    if acf == "sigmoid":
+def activate_derivative(acf='relu'):
+    if acf == 'relu':
+        return relu_prime
+    elif acf == "sigmoid":
         return sigmoid_prime
     elif acf == "tanh":
         return tanh_prime
