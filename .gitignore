@@ -1,3 +1,4 @@
 # python cache files
 __pycache__
 *.pyc
+*.swp
